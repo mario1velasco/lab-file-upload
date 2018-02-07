@@ -4,10 +4,6 @@ const Comment = require('../models/comment.model');
 const mongoose = require('mongoose');
 
 module.exports.show = (req, res, next) => {
-  console.log("AAAAAAAAAAAAAAAAAA");
-  console.log("AAAAAAAAAAAAAAAAAA");
-  console.log("AAAAAAAAAAAAAAAAAA");
-  
   Comment.find()
     .then((comments) => {
       console.log(comments);
@@ -18,9 +14,11 @@ module.exports.show = (req, res, next) => {
     });
 };
 
-// module.exports.create = (req, res, next) => {
-//   res.render('post/new');
-// };
+module.exports.create = (req, res, next) => {
+  res.render('comment/new',{
+    postId:req.params.postId
+  });
+};
 
 // module.exports.doCreate = (req, res, next) => {
 //   if (!req.file) {
