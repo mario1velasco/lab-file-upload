@@ -9,7 +9,7 @@ const upload = multer({
   dest: './public/uploads/'
 });
 
-router.get('/:id', commentController.show);
+router.get('/:postId/comments', commentController.show);
 // router.get('/new', secure.isAuthenticated, commentController.create);
 // router.comment('/', secure.isAuthenticated, upload.single('photo'), commentController.doCreate);
 // router.comment('/:id/', secure.isAuthenticated, commentController.doUpdate);

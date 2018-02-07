@@ -1,0 +1,28 @@
+<div class="container-fluid">
+    <div class="home-heading text-center row">
+      <div class="home-heading-wrapper">
+        <h1>Comments from the post:</h1>
+        <% if (typeof(postId) !== 'undefined') { %>
+          <h2>ID: <%= postId %></h2>
+        <% } %>
+        <p>Do you want create a comment??</p>
+        <a class="btn btn-default" href="/comments/new">Create a comment</a>
+      </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+            <h3>Posts of users:</h3>
+              <% if (typeof(comments) !== 'undefined') { %>
+                  <% comments.forEach((comment) => { %>
+                      <div class="panel panel-default">
+                          <div class="panel-heading">
+                              <p><a href="/users/<%= comment._creator %>"><strong>@<%= comment._creator %></strong></a> 
+                              <p><%= comment.content %></p>
+                              <img src="<%=comment.pic_path%>" alt="" height="100px">
+                          </div>
+                      </div>
+                  <% }); %>
+              <% } %>
+          </div>
+      </div>
+  </div>

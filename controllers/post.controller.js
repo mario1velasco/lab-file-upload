@@ -25,23 +25,23 @@ module.exports.doCreate = (req, res, next) => {
       }
     });
   } else {
-    const pic = new Post({
+    const post = new Post({
       content: req.body.content,
       pic_path: `/uploads/${req.file.filename}`,
       pic_name: req.body.pic_name,
       _creator: req.user._id
     });
     const file_name = req.file.originalname;
-    if (!pic.content || !pic.pic_path || !pic.pic_name) {
+    if (!post.content || !post.pic_path || !post.pic_name) {
       res.render('post/new', {
         error: {
-          content: pic.content ? '' : 'Content is required',
-          pic_path: pic.pic_path ? '' : 'Name is required',
-          pic_name: pic.pic_name ? '' : 'Post name is required'
+          content: post.content ? '' : 'Content is required',
+          pic_path: post.pic_path ? '' : 'Name is required',
+          pic_name: post.pic_name ? '' : 'Post name is required'
         }
       });
     }
-    pic.save()
+    post.save()
       .then(() => {
         res.redirect('/posts');
       })

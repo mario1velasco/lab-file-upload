@@ -17,6 +17,11 @@ const commentSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
     required: [true, `Couldnt match the comment with the user`]
+  },
+  postId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Post',
+    required: [true, `Couldnt match the comment with the original post`]
   }
 }, {
   timestamps: { createdAt: "created_at", updatedAt: "updated_at" }
