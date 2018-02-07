@@ -1,6 +1,6 @@
 
 const mongoose = require('mongoose');
-const DB_NAME = 'ex-ironfunding';
+const DB_NAME = 'lab-tumblr';
 const MONGODB_URI = `mongodb://localhost/${DB_NAME}`;
 
 mongoose.Promise = Promise;
@@ -10,4 +10,4 @@ mongoose.connect(MONGODB_URI)
     })
     .catch(error => {
         console.error(`Unable to connect to db ${DB_NAME}: ${error}`);
-    })
+    });

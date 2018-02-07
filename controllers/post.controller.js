@@ -1,14 +1,14 @@
 const User = require('../models/user.model');
-const Picture = require('../models/picture.model');
+const Post = require('../models/post.model');
 const mongoose = require('mongoose');
 
 module.exports.index = (req, res, next) => {
-  Picture.find()
-    .then((pictures) => {
-      console.log(pictures);
+  Post.find()
+    .then((posts) => {
+      console.log(posts);
 
       res.render('post/index', {
-        pictures: pictures
+        posts: posts
       });
     });
 };
@@ -25,7 +25,7 @@ module.exports.doCreate = (req, res, next) => {
       }
     });
   } else {
-    const pic = new Picture({
+    const pic = new Post({
       content: req.body.content,
       pic_path: `/uploads/${req.file.filename}`,
       pic_name: req.body.pic_name,
@@ -37,7 +37,7 @@ module.exports.doCreate = (req, res, next) => {
         error: {
           content: pic.content ? '' : 'Content is required',
           pic_path: pic.pic_path ? '' : 'Name is required',
-          pic_name: pic.pic_name ? '' : 'Picture name is required'
+          pic_name: pic.pic_name ? '' : 'Post name is required'
         }
       });
     }
@@ -48,7 +48,7 @@ module.exports.doCreate = (req, res, next) => {
       .catch(error => {
         if (error instanceof mongoose.Error.ValidationError) {
           res.render('error', {
-            message: "Error in save a picture in DB",
+            message: "Error in save a post in DB",
             error: error.errors
           });
         } else {

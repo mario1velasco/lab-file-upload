@@ -18,6 +18,7 @@ const home = require('./routes/home.routes');
 const auth = require('./routes/auth.routes');
 const user = require('./routes/user.routes');
 const post = require('./routes/post.routes');
+const comment = require('./routes/comment.routes');
 
 const app = express();
 
@@ -63,6 +64,7 @@ app.use('/', home);
 app.use('/', auth);
 app.use('/users', user);
 app.use('/posts', post);
+app.use('/comment', post);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
